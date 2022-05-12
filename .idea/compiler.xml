@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="gulimaill-ware" />
         <module name="gulimall-coupon" />
+        <module name="gulimall-common" />
+        <module name="gulimaill-ware" />
+        <module name="renren-fast" />
         <module name="gulimall-order" />
         <module name="gulimall-member" />
         <module name="gulimall-product" />
+        <module name="renren-generator" />
       </profile>
     </annotationProcessing>
   </component>
@@ -21,6 +24,8 @@
       <module name="gulimall-member" options="-parameters" />
       <module name="gulimall-order" options="-parameters" />
       <module name="gulimall-product" options="-parameters" />
+      <module name="renren-fast" options="-parameters" />
+      <module name="renren-generator" options="-parameters" />
     </option>
   </component>
 </project>
