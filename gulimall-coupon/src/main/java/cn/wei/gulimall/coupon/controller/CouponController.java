@@ -5,6 +5,8 @@ import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +28,34 @@ import cn.wei.common.utils.R;
  * @date 2022-05-11 23:05:10
  */
 @RestController
+@RefreshScope
 @RequestMapping("coupon/coupon")
 public class CouponController {
     @Autowired
     private CouponService couponService;
+
+    @Value("${coupon.user.name}")
+    private String name;
+
+    @Value("${coupon.user.age}")
+    private Integer age;
+
+    /**
+     * 测试openfeign
+     */
+    @RequestMapping("/member/list")
+    public R memberCoupons(){
+        CouponEntity couponEntity = new CouponEntity();
+        couponEntity.setCouponName("满10-1");
+        return R.ok().put("coupons",Arrays.asList(couponEntity));
+    }
+    /**
+     * 测试配置中心
+     */
+    @RequestMapping("/testConfig")
+    public R testConfig(){
+        return R.ok().put("name",name).put("age",age);
+    }
 
     /**
      * 列表
